@@ -43,8 +43,83 @@ table.center {
 
 <hr>
 
+<h2>Comparison between time varying and fixed parameters</h2>
 
-<h2>Results on three musical examples</h2>
+<table style="width:100%">
+    <tr>
+        <th align="center">Example</th>
+		<th align="center">Input signal</th>
+		<th align="center">Input SNR</th>
+		<th align="center">Chain length</th>
+        <th align="center">Batch (fixed &sigma;<sup>2</sup>, &nu;)</th>
+        <th align="center">Batch (time varying &sigma;<sup>2</sup>, &nu;)</th>
+    </tr>
+    <tr>
+        <td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">Glockenspiel</div>
+        </td>
+        <td align="center" rowspan="1">
+		<audio controls style="width: 100%;">
+		<source src="audio/glock_snr10_44100hz_input.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio>
+		</td>
+		<td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">10</div>
+        </td>
+		<td align="center">800/100</td>
+        <td align="center">
+		<div class="top">SNR<sub>out</sub> = 21.42 [dB]</div>
+		<div class="bottom"><audio controls style="width: 100%;">
+		<source src="audio/batch_glock_snr10_44100hz_800_100_fixed_sig2_nu.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio></div>
+		</td>
+        <td align="center">
+		<div class="top">SNR<sub>out</sub> = 20.44 [dB]</div>
+		<div class="bottom"><audio controls style="width: 100%;">
+		<source src="audio/batch_glock_snr10_44100hz_800_100_timevarying_sig2_nu.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio></div>
+		</td>
+    </tr>
+	<tr>
+        <td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">Oratorio</div>
+        </td>
+        <td align="center" rowspan="1">
+		<audio controls style="width: 100%;">
+		<source src="audio/batch_oratorio_snr10_44100hz_input.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio>
+		</td>
+		<td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">10</div>
+        </td>
+		<td align="center">800/100</td>
+        <td align="center">
+		<div class="top">SNR<sub>out</sub> = 19.31 [dB]</div>
+		<div class="bottom"><audio controls style="width: 100%;">
+		<source src="audio/batch_oratorio_snr10_44100hz_800_100_fixed_sig2_nu.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio></div>
+		</td>
+        <td align="center">
+		<div class="top">SNR<sub>out</sub> = 19.12 [dB]</div>
+		<div class="bottom"><audio controls style="width: 100%;">
+		<source src="audio/batch_oratorio_snr10_44100hz_800_100_time_varying_sig2_nu.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio></div>
+		</td>
+    </tr>
+</table>
+
+
+<hr>
+
+
+
+<h2>Results of sMCMC on different musical examples</h2>
 
 <table style="width:100%">
     <tr>
