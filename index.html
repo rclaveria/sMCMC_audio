@@ -35,15 +35,11 @@ table.center {
 </head>
 <body>
 
-<a href="index.html" class="button">Back to main site</a>
-
 <h1>A sequential framework for music restoration</h1> 
 <br><table border="0" width="100%">
 
 <hr>
-<p>In this work we present a sequential framework for audio signal restoration. Building upon Gabor regression models intended for batch inference, we represent the evolution of synthesis coefficients over time in terms of a state-space model amenable to Bayesian filtering strategies. Rather than utilising off-the-shelf particle filters, we exploit the probabilistic structure of the modified model to derive exact Gibbs updates for the parameters within each state. Thus, sequential inference is carried out by means of sequential Markov Chain Monte Carlo (also known as MCMC-Particle filter) plus a rejuvenating move to ensure particle diversity. As an exploratory test for the framework's potential, we employ the proposed sequential Markov Chain Monte Carlo algorithm to analyse a series of degraded audio signals. The resulting filtering distributions are used to generate enhanced versions of the input. Results suggest that the proposed model is competitive with batch strategies in terms of perceptual quality and waveform signal-to-noise ratio, and can readily address scenarios where existing batch schemes may struggle, such as non-stationary noise or variations of volume. Moreover, the sequential approach shows potential for real-time applications---provided that enhanced inference strategies are developed. We also study the loss associated to reconstructing the signal using a filtering approach instead of sampling entire trajectories of the state, x<sub>1:T</sub></p>
-
-<!--<p>See draft <a href="pdfs/audio_sMCMC.pdf" target="_blank">here</a> (or <a href="https://www.overleaf.com/project/5f743dc4ef6ed50001a384f2" target="_blank">here</a>).</p> -->
+<p> With the aim of addressing audio signal restoration as a sequential inference problem, we build upon batch Gabor regression models to construct a state-space model for audio time series. We exploit the probabilistic structure of the proposed model to derive exact Gibbs updates for the parameters within each state. Thus, sequential inference is carried out by means of sequential Markov Chain Monte Carlo (also known as MCMC-Particle filter), which is tested on a series of denoising examples. Results suggest that the sequential approach is competitive with batch strategies in terms of perceptual quality and signal-to-noise ratio, while showing potential for real-time applications---provided that enhanced inference strategies are developed.</sub></p>
 
 <hr>
 
@@ -56,310 +52,155 @@ table.center {
 		<th align="center">Input signal</th>
 		<th align="center">Input SNR</th>
 		<th align="center">Chain length</th>
-        <th align="center">Batch (global &sigma;<sup>2</sup>, &nu;)</th>
         <th align="center">Batch (time varying &sigma;<sup>2</sup>, &nu;)</th>
         <th align="center">Sequential inference</th>
     </tr>
     <tr>
-        <td align="center" rowspan="2">
+        <td align="center" rowspan="1">
             <div style="width:100%;word-break: normal">Glockenspiel</div>
         </td>
-        <td align="center" rowspan="2">
+        <td align="center" rowspan="1">
 		<audio controls style="width: 100%;">
-		<source src="audio/sMCMC/glock_input.wav" type="audio/wav">
+		<source src="audio/glock_snr10_44100hz_input.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio>
 		</td>
-		<td align="center" rowspan="2">
-            <div style="width:100%;word-break: normal">15</div>
+		<td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">10</div>
         </td>
-		<td align="center">Short chain</td>
+		<td align="center">80/20</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 21.99 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = TO-DO [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
 		<source src="audio/sMCMC/glock_short_basic.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 20.13 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = 19.24 [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/glock_short_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 19.20 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/glock_short_seq.wav" type="audio/wav">
+		<source src="audio/glock_snr10_44100hz_80_20.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
     </tr>
     <tr>
-		<td align="center">Long chain</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 22.41 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/glock_long_basic.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 20.94 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/glock_long_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 18.62 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/glock_long_seq.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-    </tr>
-	<tr>
-        <td align="center" rowspan="2">
+        <td align="center" rowspan="1">
             <div style="width:100%;word-break: normal">Jazz trumpet</div>
         </td>
-		<td align="center" rowspan="2">
+        <td align="center" rowspan="1">
 		<audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_input.wav" type="audio/wav">
+		<source src="audio/trumpet_snr15_44100hz_input.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio>
 		</td>
-		<td align="center" rowspan="2">
+		<td align="center" rowspan="1">
             <div style="width:100%;word-break: normal">15</div>
         </td>
-		<td align="center">Short chain</td>
+		<td align="center">80/20</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 19.77 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = TO-DO [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_short_basic.wav" type="audio/wav">
+		<source src="audio/sMCMC/glock_short_basic.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 17.14 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = ~19. (update) [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_short_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 17.28 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_short_seq.wav" type="audio/wav">
+		<source src="audio/trumpet_snr15_44100hz_80_20.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
     </tr>
     <tr>
-		<td align="center">Long chain</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 20.68 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_long_basic.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 19.92 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_long_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 16.48 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet_long_seq.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-    </tr>
-	<tr>
-        <td align="center" rowspan="2">
-            <div style="width:100%;word-break: normal">Jazz trumpet 2</div>
-        </td>
-		<td align="center" rowspan="2">
-		<audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_input.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio>
-		</td>
-		<td align="center" rowspan="2">
-            <div style="width:100%;word-break: normal">15</div>
-        </td>
-		<td align="center">Short chain</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 21.53 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_short_basic.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 18.70 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_short_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 19.31 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_short_seq.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-    </tr>
-    <tr>
-		<td align="center">Long chain</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 21.97 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_long_basic.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 16.19 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_long_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 18.01 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet2_long_seq.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-    </tr>
-	<tr>
-        <td align="center" rowspan="2">
-            <div style="width:100%;word-break: normal">Jazz trumpet 3</div>
-        </td>
-		<td align="center" rowspan="2">
-		<audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_input.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio>
-		</td>
-		<td align="center" rowspan="2">
-            <div style="width:100%;word-break: normal">20</div>
-        </td>
-		<td align="center">Short chain</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 24.84 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_short_basic.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 21.38 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_short_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 21.23 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_short_seq.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-    </tr>
-    <tr>
-		<td align="center">Long chain</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 25.33 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_long_basic.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-        <td align="center">
-		<div class="top">SNR<sub>out</sub> = 24.77 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_long_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 20.52 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/trumpet3_long_seq.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-    </tr>
-	<tr>
-        <td align="center" rowspan="2">
+        <td align="center" rowspan="1">
             <div style="width:100%;word-break: normal">Vibraphone</div>
         </td>
-		<td align="center" rowspan="2">
+        <td align="center" rowspan="1">
 		<audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_input.wav" type="audio/wav">
+		<source src="audio/vibra_snr15_44100hz_input.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio>
 		</td>
-		<td align="center" rowspan="2">
+		<td align="center" rowspan="1">
             <div style="width:100%;word-break: normal">15</div>
         </td>
-		<td align="center">Short chain</td>
+		<td align="center">80/20</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 23.26 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = TO-DO [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_short_basic.wav" type="audio/wav">
+		<source src="audio/sMCMC/glock_short_basic.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 21.52 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = ~23. (update) [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_short_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 20.97 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_short_seq.wav" type="audio/wav">
+		<source src="audio/vibra_snr15_44100hz_80_20.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
     </tr>
     <tr>
-		<td align="center">Long chain</td>
+        <td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">Vibraphone</div>
+        </td>
+        <td align="center" rowspan="1">
+		<audio controls style="width: 100%;">
+		<source src="audio/vibra_snr20_44100hz_input.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio>
+		</td>
+		<td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">20</div>
+        </td>
+		<td align="center">80/20</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 23.74 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = TO-DO [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_long_basic.wav" type="audio/wav">
+		<source src="audio/sMCMC/glock_short_basic.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
         <td align="center">
-		<div class="top">SNR<sub>out</sub> = 18.42 [dB]</div>
+		<div class="top">SNR<sub>out</sub> = ~23. (update) [dB]</div>
 		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_long_modified.wav" type="audio/wav">
-		Your browser does not support the audio element.
-		</audio></div>
-		</td>
-		<td align="center">
-		<div class="top">SNR<sub>out</sub> = 18.95 [dB]</div>
-		<div class="bottom"><audio controls style="width: 100%;">
-		<source src="audio/sMCMC/vibraphone_long_seq.wav" type="audio/wav">
+		<source src="audio/vibra_snr20_44100hz_80_20.wav" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio></div>
 		</td>
     </tr>
+    <tr>
+        <td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">Oratorio</div>
+        </td>
+        <td align="center" rowspan="1">
+		<audio controls style="width: 100%;">
+		<source src="audio/oratorio_snr15_44100hz_input.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio>
+		</td>
+		<td align="center" rowspan="1">
+            <div style="width:100%;word-break: normal">15</div>
+        </td>
+		<td align="center">80/20</td>
+        <td align="center">
+		<div class="top">SNR<sub>out</sub> = TO-DO [dB]</div>
+		<div class="bottom"><audio controls style="width: 100%;">
+		<source src="audio/sMCMC/glock_short_basic.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio></div>
+		</td>
+        <td align="center">
+		<div class="top">SNR<sub>out</sub> = ~19. (update) [dB]</div>
+		<div class="bottom"><audio controls style="width: 100%;">
+		<source src="audio/oratorio_snr15_44100hz_80_20.wav" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio></div>
+		</td>
+    </tr>
+	
 </table>
 
 
